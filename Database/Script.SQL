@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS User
+;
+DROP TABLE IF EXISTS News
+;
+
+CREATE TABLE User
+(
+	User VARCHAR(50) NOT NULL,
+	Password TEXT,
+	Name VARCHAR(100),
+	Email VARCHAR(100),
+	Status SMALLINT,
+	ValidationCode TEXT,
+	PRIMARY KEY (User)
+) 
+;
+
+
+CREATE TABLE News
+(
+	ID INTEGER,
+	Title VARCHAR(100),
+	Image BLOB,
+	Text TEXT,
+	DateTime DATETIME,
+	CodeUser VARCHAR(50),
+	KEY (CodeUser)
+) 
+;
+
+
+
+
+
+ALTER TABLE News ADD CONSTRAINT FK_News_User 
+	FOREIGN KEY (CodeUser) REFERENCES User (User)
+	ON UPDATE CASCADE
+;
