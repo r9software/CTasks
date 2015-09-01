@@ -1,30 +1,30 @@
-DROP TABLE IF EXISTS User
+DROP TABLE IF EXISTS users
 ;
-DROP TABLE IF EXISTS News
+DROP TABLE IF EXISTS news
 ;
 
-CREATE TABLE User
+CREATE TABLE users
 (
-	User VARCHAR(50) NOT NULL,
-	Password TEXT,
-	Name VARCHAR(100),
-	Email VARCHAR(100),
-	Status SMALLINT,
-	ValidationCode TEXT,
-	PRIMARY KEY (User)
+	user VARCHAR(50) NOT NULL,
+	password TEXT,
+	name VARCHAR(100),
+	email VARCHAR(100),
+	status SMALLINT,
+	validationcode TEXT,
+	PRIMARY KEY (user)
 ) 
 ;
 
 
-CREATE TABLE News
+CREATE TABLE news
 (
 	ID INTEGER,
-	Title VARCHAR(100),
-	Image BLOB,
-	Text TEXT,
-	DateTime DATETIME,
-	CodeUser VARCHAR(50),
-	KEY (CodeUser)
+	title VARCHAR(100),
+	image BLOB,
+	text TEXT,
+	datetime DATETIME,
+	codeuser VARCHAR(50),
+	KEY (codeuser)
 ) 
 ;
 
@@ -32,7 +32,7 @@ CREATE TABLE News
 
 
 
-ALTER TABLE News ADD CONSTRAINT FK_News_User 
-	FOREIGN KEY (CodeUser) REFERENCES User (User)
+ALTER TABLE news ADD CONSTRAINT FK_News_User 
+	FOREIGN KEY (codeuser) REFERENCES users (user)
 	ON UPDATE CASCADE
 ;
